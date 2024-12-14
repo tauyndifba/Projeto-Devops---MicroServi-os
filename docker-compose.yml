@@ -1,0 +1,24 @@
+services:
+  persistent: 
+    build:
+      context: ./projeto-devops-persistent
+    container_name: persistentServices
+    ports: 
+      - "8080:8080"
+    networks:
+      - devops-network
+    hostname: persistent 
+
+  app:
+    build:
+      context: ./projeto-devops-app
+    container_name: apptServices
+    ports: 
+      - "9090:9090"
+    networks:
+      - devops-network
+    hostname: app
+
+networks:
+  devops-network:
+    driver: bridge
